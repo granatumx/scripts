@@ -15,6 +15,7 @@ RUN apt-get install -y vim
 RUN apt-get install -y git
 RUN apt-get install -y curl
 RUN apt-get install -y rsync
+RUN apt-get install -y bash-completion
 
 # If you want micro to edit, uncomment below
 # RUN curl https://getmic.ro | bash
