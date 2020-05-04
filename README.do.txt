@@ -20,8 +20,7 @@ Pros:
 * Testing can be isolated.
 
 Cons:
-* High memory (each image is likely 1-2GB)
- * But you are processing sequences which are likely 100+GB.
+* High memory (each image is likely 1-2GB) (But you are processing sequences which are likely 100+GB).
 * Knowledge of GranatumX architecture and Docker.
 
 If you are on Windows 10 you can install the Windows Insider edition
@@ -39,7 +38,6 @@ zsh should work OK.
 
 * All docker images are at "https://hub.docker.com/u/granatumx".
 * All github repos are at "https://github.com/granatumx/*".
-
 
 First set up your scripts and aliases to make things easier. This command should pull the container if
 it does not exist locally which facilitates installing on a server.
@@ -63,8 +61,3 @@ Sourcing gx.sh output with `source <( docker run --rm -it granatumx/scripts:1.0.
 numerous shortcuts to docker. You will be able to compress things like `docker image ls` to `dils`.
 These shortcuts will not be as helpful if you do not have a working knowledge of `docker`, but can
 shorten your time for doing simple things once you are knowledgeable in what the commands execute.
-
-Note that each git repo is cloned in the corresponding docker image. You can git pull and commit from 
-within the docker image so you do not need
-anything special installed on your base system. This approach is achieved by using 
-"Docker sibling processes": "https://medium.com/@andreacolangelo/sibling-docker-container-2e664858f87a".
