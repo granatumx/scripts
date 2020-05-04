@@ -24,3 +24,11 @@ alias deit="docker exec -it"
 alias dwebapp="deit gx-webapp bash"
 alias errwebapp="gx errWebapp.sh"
 alias errtaskrunner="gx errTaskrunner.sh"
+gxdoc() { 
+	docker run --rm -d -it --name gx-tmp1 granatumx/doc:{VER} bash; 
+	docker cp $1/$2 gx-tmp1:/tmp/.;
+	docker exec -it gx-tmp1 doconce format pandoc $2 --github_md;
+	docker cp gx-tmp1:/tmp/. $1/;
+	docker stop gx-tmp1;
+}
+export -f gxdoc

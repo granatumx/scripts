@@ -13,4 +13,5 @@ shell:
 	docker run -v /var/run/docker.sock:/var/run/docker.sock --network=host --rm -it $(GX) bash
 
 doc:
-	doconce format pandoc README --github_md
+	./gendoc.sh
+	mv README.go.md README.md

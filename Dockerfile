@@ -31,12 +31,11 @@ RUN apt-get install -y docker-ce-cli
 
 RUN apt-get install -y sed bash
 
-RUN apt install -y python3 python3-pip
-
-WORKDIR /tmp
-RUN git clone https://github.com/hplgit/doconce.git
-RUN cd doconce && pip3 install .
-RUN cd .. && rm -rf doconce
+# RUN apt install -y python3 python3-pip
+# WORKDIR /tmp
+# RUN git clone https://github.com/hplgit/doconce.git
+# RUN cd doconce && pip3 install .
+# RUN cd .. && rm -rf doconce
 
 ARG VER=1.0.0
 ARG GX=granatumx/scripts:1.0.0
@@ -51,7 +50,7 @@ RUN GXtranslateVERinSH.sh
 
 # The Makefile is copied inside the docker image and running make here
 # may be useful if there are docker image utilities that need built
-RUN make
+# RUN make
 
 COPY gx-aliases.sh /root/.bash_aliases
 COPY .bashrc /root/.bashrc
