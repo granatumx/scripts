@@ -2,11 +2,6 @@
 gbox-scripts is an image that provides shell scripts for automating GranatumX deployment
 !equote
 
-## TITLE: Gbox Scripts Manual
-## AUTHOR: D. Garmire at Department of EECS, University of Michigan -- Ann Arbor
-## DATE: today
-## TOC: on
-
 ===== Prerequisites =====
 
 You mainly need a working copy of "Docker": "http://docker.com". It is used
