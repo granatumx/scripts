@@ -46,6 +46,8 @@ ENV BASH_ENV=/etc/profile
 WORKDIR /usr/src/app
 COPY . .
 
+RUN GXtranslateVERinSH.sh
+
 # The Makefile is copied inside the docker image and running make here
 # may be useful if there are docker image utilities that need built
 RUN make
