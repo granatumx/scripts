@@ -61,3 +61,10 @@ Sourcing gx.sh output with `source <( docker run --rm -it granatumx/scripts:1.0.
 numerous shortcuts to docker. You will be able to compress things like `docker image ls` to `dils`.
 These shortcuts will not be as helpful if you do not have a working knowledge of `docker`, but can
 shorten your time for doing simple things once you are knowledgeable in what the commands execute.
+
+Note that scripts kicks off 
+"sibling processes": "https://medium.com/@andreacolangelo/sibling-docker-container-2e664858f87a".
+This approach allows you to isolate the components of the system and reduce side-effects. If you
+edit one container when running with the `--rm` option, content may not persist (except through 
+"volumes": "https://docs.docker.com/storage/volumes/"). 
+

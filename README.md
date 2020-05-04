@@ -16,9 +16,7 @@ Pros:
 * Testing can be isolated.
 
 Cons:
-* High memory (each image is likely 1-2GB)
- * But you are processing sequences which are likely 100+GB.
-
+* High memory (each image is likely 1-2GB) (But you are processing sequences which are likely 100+GB).
 * Knowledge of GranatumX architecture and Docker.
 
 If you are on Windows 10 you can install the Windows Insider edition
@@ -62,8 +60,10 @@ numerous shortcuts to docker. You will be able to compress things like `docker i
 These shortcuts will not be as helpful if you do not have a working knowledge of `docker`, but can
 shorten your time for doing simple things once you are knowledgeable in what the commands execute.
 
-Note that each git repo is cloned in the corresponding docker image. You can git pull and commit from 
-within the docker image so you do not need
-anything special installed on your base system. This approach is achieved by using 
-[Docker sibling processes](https://medium.com/@andreacolangelo/sibling-docker-container-2e664858f87a).
+Note that scripts kicks off 
+[sibling processes](https://medium.com/@andreacolangelo/sibling-docker-container-2e664858f87a).
+This approach allows you to isolate the components of the system and reduce side-effects. If you
+edit one container when running with the `--rm` option, content may not persist (except through 
+[volumes](https://docs.docker.com/storage/volumes/)). 
+
 
