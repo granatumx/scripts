@@ -2,10 +2,10 @@
 gbox-scripts is an image that provides shell scripts for automating GranatumX deployment
 !equote
 
-TITLE: Gbox Scripts Manual
-AUTHOR: D. Garmire at Department of EECS, University of Michigan -- Ann Arbor
-DATE: today
-TOC: on
+## TITLE: Gbox Scripts Manual
+## AUTHOR: D. Garmire at Department of EECS, University of Michigan -- Ann Arbor
+## DATE: today
+## TOC: on
 
 ===== Prerequisites =====
 
@@ -21,7 +21,7 @@ Pros:
 
 Cons:
 * High memory (each image is likely 1-2GB)
-** But you are processing sequences which are likely 100+GB.
+ * But you are processing sequences which are likely 100+GB.
 * Knowledge of GranatumX architecture and Docker.
 
 If you are on Windows 10 you can install the Windows Insider edition

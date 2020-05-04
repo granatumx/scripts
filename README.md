@@ -2,13 +2,6 @@
 
 
 
-% Gbox Scripts Manual
-% **D. Garmire** at Department of EECS, University of Michigan &ndash; Ann Arbor
-% May 4, 2020
-
-<!-- Table of contents: Run pandoc with --toc option -->
-
-
 
 ### Prerequisites
 
@@ -24,8 +17,8 @@ Pros:
 
 Cons:
 * High memory (each image is likely 1-2GB)
+ * But you are processing sequences which are likely 100+GB.
 
-** But you are processing sequences which are likely 100+GB.
 * Knowledge of GranatumX architecture and Docker.
 
 If you are on Windows 10 you can install the Windows Insider edition
