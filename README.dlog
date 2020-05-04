@@ -1,0 +1,11 @@
+translating doconce text in README.do.txt to pandoc
+*** warning: footnotes are not supported for format pandoc
+    footnotes will be left in the doconce syntax
+output in README.md
+translating doconce text in README.do.txt to pandoc
+
+*** error: inconsistent no of = in heading:
+===== Notes ======
+    lengths: 5 and 6, must be equal and odd
+translating doconce text in README.do.txt to pandoc
+output in README.md

@@ -4,7 +4,7 @@ FROM ubuntu:latest
 MAINTAINER "granatumx" granatumx@github.com
 
 ENV TERM=xterm-256color
-ENV PATH="$PATH:./"
+ENV PATH="$PATH:."
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ America/New_York
@@ -30,6 +30,13 @@ RUN apt-get install -y docker-ce-cli
 
 RUN apt-get install -y sed bash
 
+RUN apt install -y python3 python3-pip
+
+WORKDIR /tmp
+RUN git clone https://github.com/hplgit/doconce.git
+RUN cd doconce && pip3 install .
+RUN cd .. && rm -rf doconce
+
 ARG VER=1.0.0
 ARG GX=granatumx/scripts:1.0.0
 ENV VER=$VER
@@ -38,6 +45,10 @@ ENV BASH_ENV=/etc/profile
 
 WORKDIR /usr/src/app
 COPY . .
+
+# The Makefile is copied inside the docker image and running make here
+# may be useful if there are docker image utilities that need built
+RUN make
 
 COPY gx-aliases.sh /root/.bash_aliases
 COPY .bashrc /root/.bashrc
