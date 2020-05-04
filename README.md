@@ -2,7 +2,6 @@
 
 
 
-
 ### Prerequisites
 
 You mainly need a working copy of [Docker](http://docker.com). It is used
