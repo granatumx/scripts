@@ -18,10 +18,10 @@ echo "===> Definition files from gbox"
 ls
 echo "<==="
 if [ -f "/tmp-gx/package.yaml" ]; then
-  docker run --network=host --rm -v gx-tmp:/tmp-gx -it granatumx/gbox-install-run:{VER} ./installGbox --gboxDir=/tmp-gx
+  docker run --network=host --rm -v gx-tmp:/tmp-gx -it granatumx/install-gbox-run:{VER} ./installGbox --gboxDir=/tmp-gx
 fi
 
 if [ -d "/tmp-gx/recipes" ]; then
-  docker run --network=host --rm -v gx-tmp:/tmp-gx -it granatumx/gbox-install-run:{VER} ./installGbox --recipesDir=/tmp-gx/recipes
+  docker run --network=host --rm -v gx-tmp:/tmp-gx -it granatumx/install-gbox-run:{VER} ./installGbox --recipesDir=/tmp-gx/recipes
 fi
 rm -rf /tmp-gx/*

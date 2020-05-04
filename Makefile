@@ -14,4 +14,3 @@ shell:
 
 doc:
 	./gendoc.sh
-	mv README.go.md README.md
