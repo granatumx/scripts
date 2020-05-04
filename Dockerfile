@@ -1,19 +1,24 @@
 # prerequisites: docker
 
 FROM ubuntu:latest
+MAINTAINER "granatumx" granatumx@github.com
+
+ENV TERM=xterm-256color
+ENV PATH="$PATH:./"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ America/New_York
 
-WORKDIR /usr/src/app
-
 RUN apt-get update
 RUN apt-get install -y apt-utils
-RUN apt-get install -y tmux vim
+RUN apt-get install -y vim
+RUN apt-get install -y git
 RUN apt-get install -y curl
 RUN apt-get install -y rsync
-RUN curl https://getmic.ro | bash
-RUN mv micro /usr/local/bin
+
+# If you want micro to edit, uncomment below
+# RUN curl https://getmic.ro | bash
+# RUN mv micro /usr/local/bin
 
 # Allow granatumx to kick off docker containers itself
 RUN apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
@@ -29,14 +34,13 @@ ARG VER=1.0.0
 ARG GX=granatumx/scripts:1.0.0
 ENV VER=$VER
 ENV GX=$GX
-ENV PATH="$PATH:./"
 ENV BASH_ENV=/etc/profile
 
+WORKDIR /usr/src/app
 COPY . .
 
 COPY gx-aliases.sh /root/.bash_aliases
-
-ENV TERM=xterm-256color
+COPY .bashrc /root/.bashrc
 
 SHELL [ "/bin/bash", "-i", "-l", "-c" ]
 
