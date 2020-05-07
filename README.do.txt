@@ -45,6 +45,7 @@ The normal startup sequence for GranatumX is as follows.
 
 !bc sys
 $ gx run.sh    			# Will start the database, taskrunner, and webapp
+$ gx initGXdatabase.sh    	# Only have to do this at the beginning as it prepares the database
 $ gx installStandardGboxes.sh   # Install standard gboxes (install specific ones with installGbox.sh)
 
 # Now you should be able to navigate to http://localhost:34567 and see GranatumX running.
