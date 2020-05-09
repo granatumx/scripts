@@ -55,6 +55,8 @@ RUN GXtranslateVERinSH.sh
 COPY gx-aliases.sh /root/.bash_aliases
 COPY .bashrc /root/.bashrc
 
+ENV DOCKER_SOCKET="/var/run/docker.sock"
+
 SHELL [ "/bin/bash", "-i", "-l", "-c" ]
 
 CMD echo "Please choose a shell script that is available." && ls ./*.sh

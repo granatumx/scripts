@@ -1,11 +1,12 @@
 # These are useful aliases when dealing with docker containers
 # Some of these can be turned into functions
 # ear() { echo "$@"; $@; }
+if [ -z ${DOCKER_SOCKET+"D"} ]; then export DOCKER_SOCKET="/var/run/docker.sock"; fi
 alias d="docker"
 alias dr="d run"
 alias drit="dr -it"
 alias drrmit="dr --rm -it"
-alias drvrmit="dr -v /var/run/docker.sock:/var/run/docker.sock --rm -it"
+alias drvrmit='dr -v $DOCKER_SOCKET:/var/run/docker.sock --rm -it'
 alias di="d image"
 alias dils="di ls"
 alias dip="di prune"
@@ -19,7 +20,7 @@ alias dvp="dv prune"
 alias dprune="dip; dcp; dvp"
 alias dprunef="dip -f; dcp -f; dvp -f"
 alias dlsgx="dils granatumx/*; dvls | grep gx-; dcls | grep gx-"
-alias gx="drvrmit -v gx-tmp:/tmp-gx"
+alias gx='drvrmit -e DOCKER_SOCKET=$DOCKER_SOCKET -v gx-tmp:/tmp-gx {GX}'
 alias deit="docker exec -it"
 alias dwebapp="deit gx-webapp bash"
 alias errwebapp="gx errWebapp.sh"
