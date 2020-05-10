@@ -42,13 +42,20 @@ source <( docker run --rm -it granatumx/scripts:1.0.0 gx.sh )
 ```
 
 This command makes `gx` available. You can simply run `gx` to obtain a list of scripts available.
+The normal initialization sequence for GranatumX is as follows.
+
+
+```
+$ gx runGXdatabase.sh		# Kick off database, wait a bit after starting up (4 seconds?)
+$ gx initGXdatabase.sh		# Initialize database, wait for completion
+$ gx installStandardGboxes.sh   # Install standard gboxes (install specific ones with installGbox.sh)
+```
+
 The normal startup sequence for GranatumX is as follows.
 
 
 ```
 $ gx run.sh    			# Will start the database, taskrunner, and webapp
-$ gx initGXdatabase.sh    	# Only have to do this at the beginning as it prepares the database
-$ gx installStandardGboxes.sh   # Install standard gboxes (install specific ones with installGbox.sh)
 
 # Now you should be able to navigate to http://localhost:34567 and see GranatumX running.
 ```
@@ -65,5 +72,10 @@ Note that scripts kicks off
 This approach allows you to isolate the components of the system and reduce side-effects. If you
 edit one container when running with the `--rm` option, content may not persist (except through 
 [volumes](https://docs.docker.com/storage/volumes/)). 
+
+You can determine errors with running the taskrunner or webapp using `errwebapp` or `errtaskrunner`.
+
+If you have `docker` installed to another location, you can specify where the `docker.sock` file is
+by overriding `DOCKER_SOCKET` in bash. `export DOCKER_SOCKET="/var/docker.sock" && gx run.sh`.
 
 
