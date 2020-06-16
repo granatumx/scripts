@@ -2,6 +2,7 @@
 # Prereqs: docker
 
 echo -e "\e[1;4;31mStarting database (if already running will give an error which you can ignore)...\e[0m"
+./createGXNetwork.sh
 ./runGXdatabase.sh
 sleep 4
 

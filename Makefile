@@ -10,7 +10,7 @@ docker-push:
 	docker push $(GX)
 
 shell:
-	docker run -v /var/run/docker.sock:/var/run/docker.sock --network=host --rm -it $(GX) bash
+	docker run -v /var/run/docker.sock:/var/run/docker.sock --network=gx-net --rm -it $(GX) bash
 
 doc:
 	./gendoc.sh

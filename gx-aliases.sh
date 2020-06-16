@@ -23,6 +23,7 @@ alias dlsgx="dils granatumx/*; dvls | grep gx-; dcls | grep gx-"
 alias gx='drvrmit -e DOCKER_SOCKET=$DOCKER_SOCKET -v gx-tmp:/tmp-gx {GX}'
 alias deit="docker exec -it"
 alias dwebapp="deit gx-webapp bash"
+alias gxtail="deit gx-webapp tail -f /var/granatum/error-webapp.log"
 alias errwebapp="gx errWebapp.sh"
 alias errtaskrunner="gx errTaskrunner.sh"
 gxdoc() { 

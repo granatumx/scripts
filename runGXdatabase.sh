@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker run --rm -it -v gx-db-data:/var/lib/postgresql/data -p 127.0.0.1:5433:5432 -e POSTGRES_PASSWORD=12qw --name gx-database -d postgres:latest -c 'listen_addresses=*'
+docker run --rm -it -v gx-db-data:/var/lib/postgresql/data --network gx-net -e POSTGRES_PASSWORD=12qw --name gx-database --ip 192.168.1.101 -d postgres:latest -c 'listen_addresses=*'
