@@ -7,6 +7,7 @@ alias dr="d run"
 alias drit="dr -it"
 alias drrmit="dr --rm -it"
 alias drvrmit='dr -v $DOCKER_SOCKET:/var/run/docker.sock --rm -it'
+alias dp='docker pull'
 alias di="d image"
 alias dils="di ls"
 alias dip="di prune"
@@ -21,6 +22,7 @@ alias dprune="dip; dcp; dvp"
 alias dprunef="dip -f; dcp -f; dvp -f"
 alias dlsgx="dils granatumx/*; dvls | grep gx-; dcls | grep gx-"
 alias gx='drvrmit -e DOCKER_SOCKET=$DOCKER_SOCKET -v gx-tmp:/tmp-gx {GX}'
+alias gxupdaterunimages='dp granatumx/webapp-dev:{VER}; dp granatumx/taskrunner-run:{VER}; dp granatumx/scripts:{VER}; dp granatumx/install-gbox-run:{VER};'
 alias deit="docker exec -it"
 alias dwebapp="deit gx-webapp bash"
 alias gxtail="deit gx-webapp tail -f /var/granatum/error-webapp.log"
