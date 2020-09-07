@@ -35,4 +35,3 @@ gxdoc() {
 	docker cp gx-tmp1:/tmp/. $1/;
 	docker stop gx-tmp1;
 }
-export -f gxdoc
