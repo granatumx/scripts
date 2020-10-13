@@ -28,6 +28,8 @@ alias dwebapp="deit gx-webapp bash"
 alias gxtail="deit gx-webapp tail -f /var/granatum/error-webapp.log"
 alias errwebapp="gx errWebapp.sh"
 alias errtaskrunner="gx errTaskrunner.sh"
+alias gbuild="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_build.sh"
+alias gtest="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_test.sh"
 gxdoc() { 
 	docker run --rm -d -it --name gx-tmp1 granatumx/doc:{VER} bash; 
 	docker cp $1/$2 gx-tmp1:/tmp/.;
