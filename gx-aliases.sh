@@ -21,7 +21,8 @@ alias dvp="dv prune"
 alias dprune="dip; dcp; dvp"
 alias dprunef="dip -f; dcp -f; dvp -f"
 alias dlsgx="dils granatumx/*; dvls | grep gx-; dcls | grep gx-"
-alias gx='drvrmit -e DOCKER_SOCKET=$DOCKER_SOCKET -v gx-tmp:/tmp-gx {GX}'
+alias gx="drvrmit -e HOST_WD=\'pwd\' -e DOCKER_SOCKET=\$DOCKER_SOCKET -v gx-tmp:/tmp-gx -v \`pwd\`:/local {GX}"
+alias gxdevchown="sudo chown -R \`whoami\`:\`whoami\` *.sh gx"
 alias gxupdaterunimages='dp granatumx/webapp-dev:{VER}; dp granatumx/taskrunner-run:{VER}; dp granatumx/scripts:{VER}; dp granatumx/install-gbox-run:{VER};'
 alias deit="docker exec -it"
 alias dwebapp="deit gx-webapp bash"
