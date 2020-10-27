@@ -1,12 +1,13 @@
 !bquote
-gbox-scripts is an image that provides shell scripts for automating GranatumX deployment
+gbox-scripts is an image that provides shell scripts for automating GranatumX deployment on your server or local machine
 !equote
 
 ===== Prerequisites =====
 
 You mainly need a working copy of "Docker": "http://docker.com". It is used
 exclusively to manage system configurations for running numerous tools
-across numerous platforms. There are some pros and cons to this approach.
+across numerous platforms. There are some pros and cons to this approach. 
+There is also an implicit assumption that your bash installation allows process substitution (most modern bash versions).
 
 Pros:
 * You do not need to set up environments.
@@ -15,8 +16,11 @@ Pros:
 * Testing can be isolated.
 
 Cons:
-* High memory (each image is likely 1-2GB) (But you are processing sequences which are likely 100+GB).
+* High memory (each image is likely 1-2GB) (But you are processing matrices which are large as well).
+** This memory cost is reduced through overlays as each gbox may share base images
 * Knowledge of GranatumX architecture and Docker.
+** There are online tutorials for using Docker
+** GranatumX has its own SDK for R and python to develop gboxes (containerized units)
 
 If you are on Windows 10 you can install the Windows Insider edition
 and set up "WSL2": "https://docs.microsoft.com/en-us/windows/wsl/wsl2-install".
@@ -55,6 +59,7 @@ The normal startup sequence for GranatumX is as follows.
 $ gx run.sh    			# Will start the database, taskrunner, and webapp
 
 # Now you should be able to navigate to http://localhost:34567 and see GranatumX running.
+# If you would like to enable ssl, use apache or other webserver with proxy forwarding.
 !ec
 
 ===== Notes =====
@@ -70,7 +75,8 @@ This approach allows you to isolate the components of the system and reduce side
 edit one container when running with the `--rm` option, content may not persist (except through 
 "volumes": "https://docs.docker.com/storage/volumes/"). 
 
-You can determine errors with running the taskrunner or webapp using `errwebapp` or `errtaskrunner`.
+You can determine errors with running the taskrunner or webapp using `errwebapp`, `errtaskrunner`,
+or `gxtail`. `gxtail` is preferred as it runs an active tail to monitor the webapp.
 
 If you have `docker` installed to another location, you can specify where the `docker.sock` file is
 by overriding `DOCKER_SOCKET` in bash. `export DOCKER_SOCKET="/var/docker.sock" && gx run.sh`.

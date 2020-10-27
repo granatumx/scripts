@@ -32,9 +32,36 @@ alias errtaskrunner="gx errTaskrunner.sh"
 alias gbuild="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_build.sh"
 alias gtest="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_test.sh"
 gxdoc() { 
-	docker run --rm -d -it --name gx-tmp1 granatumx/doc:{VER} bash; 
+	docker  --rm -d -it --name gx-tmp1 granatumx/doc:{VER} bash; 
 	docker cp $1/$2 gx-tmp1:/tmp/.;
 	docker exec -it gx-tmp1 doconce format pandoc $2 --github_md;
 	docker cp gx-tmp1:/tmp/. $1/;
 	docker stop gx-tmp1;
+}
+gxtest() { 
+	docker exec -it gx-webapp bash -c "cd /var/granatum/steps/$1 && tar zcvf ../tar.tgz *";
+	rm -rf /tmp/tester;
+	mkdir -p /tmp/tester;
+	docker cp gx-webapp:/var/granatum/steps/tar.tgz /tmp/tester;
+	curdir=`pwd`;
+	pushd /tmp/tester;
+	tar zxvf tar.tgz;
+	rm -rf tar.tgz;
+	rsync -av /tmp/tester/ $curdir/test/
+	rm -rf /tmp/tester;
+	popd;
+}
+gxcleantest() {
+	rm -rf ./test/upload*/ ./test/imports/ ./test/exports/ ./test/debug/ ./test/*.json ./test/stderr ./test/stdout
+}
+gag() {
+	if [ -z "$1" ]
+	then
+		comment="Updated...";
+	else
+		comment="$1";
+	fi
+	git add -A .;
+	git commit -m "$comment";
+	git push;
 }
