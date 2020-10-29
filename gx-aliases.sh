@@ -27,10 +27,12 @@ alias gxupdaterunimages='dp granatumx/webapp-dev:{VER}; dp granatumx/taskrunner-
 alias deit="docker exec -it"
 alias dwebapp="deit gx-webapp bash"
 alias gxtail="deit gx-webapp tail -f /var/granatum/error-webapp.log"
-alias errwebapp="gx errWebapp.sh"
-alias errtaskrunner="gx errTaskrunner.sh"
+alias gxtailtaskrunner="deit gx-webapp tail -f /var/granatum/error-taskrunner.log"
+alias errwebapp="deit gx-webapp cat /var/granatum/error-webapp.log"
+alias errtaskrunner="deit gx-webapp cat /var/granatum/error-taskrunner.log"
 alias gbuild="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_build.sh"
-alias gtest="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_test.sh"
+alias gtest="rsync -av test/ runtest/ && docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_test.sh"
+alias gstage="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_staging.sh"
 gxdoc() { 
 	docker  --rm -d -it --name gx-tmp1 granatumx/doc:{VER} bash; 
 	docker cp $1/$2 gx-tmp1:/tmp/.;
@@ -39,7 +41,7 @@ gxdoc() {
 	docker stop gx-tmp1;
 }
 gxtest() { 
-	docker exec -it gx-webapp bash -c "cd /var/granatum/steps/$1 && tar zcvf ../tar.tgz *";
+	docker exec -it gx-webapp bash -c "cd \`ls -d $1\` && tar zcvf ../tar.tgz *";
 	rm -rf /tmp/tester;
 	mkdir -p /tmp/tester;
 	docker cp gx-webapp:/var/granatum/steps/tar.tgz /tmp/tester;
@@ -47,12 +49,13 @@ gxtest() {
 	pushd /tmp/tester;
 	tar zxvf tar.tgz;
 	rm -rf tar.tgz;
-	rsync -av /tmp/tester/ $curdir/test/
+	rsync -av /tmp/tester/ $curdir/runtest/
 	rm -rf /tmp/tester;
 	popd;
 }
 gxcleantest() {
-	rm -rf ./test/upload*/ ./test/imports/ ./test/exports/ ./test/debug/ ./test/*.json ./test/stderr ./test/stdout
+	rm -rf ./test/upload*/ ./test/imports/ ./test/exports/ ./test/debug/ ./test/*.json ./test/stderr ./test/stdout;
+	rm -rf runtest;
 }
 gag() {
 	if [ -z "$1" ]
