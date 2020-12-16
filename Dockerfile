@@ -1,7 +1,7 @@
 # prerequisites: docker
 
 FROM ubuntu:latest
-MAINTAINER "granatumx" granatumx@github.com
+MAINTAINER "granatumx" lana.garmire.group@gmail.com
 
 ENV TERM=xterm-256color
 ENV PATH="$PATH:."
@@ -11,6 +11,7 @@ ENV TZ America/New_York
 
 RUN apt-get update
 RUN apt-get install -y apt-utils
+RUN apt-get update
 RUN apt-get install -y vim
 RUN apt-get install -y git
 RUN apt-get install -y curl
