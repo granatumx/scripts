@@ -8,6 +8,7 @@ gboxes=(
 	"granatumx/gbox-logtransformation:1.0.0"
 	"granatumx/gbox-scanpypca:1.0.0"
 	"granatumx/gbox-umap:1.0.0"
+	"granatumx/gbox-heatmap:1.0.0"
 	"granatumx/gbox-scanpytsne:1.0.0"
 	"granatumx/gbox-samplecoloring:1.0.0"
 	"granatumx/gbox-scanpyclustering:1.0.0"
@@ -15,7 +16,6 @@ gboxes=(
 	"granatumx/gbox-broadgsea:1.0.0"
 	"granatumx/gbox-scanpypseudotime:1.0.0"
 	"granatumx/gbox-ppi:1.0.0"
-	"granatumx/gbox-g2normalization:1.0.0"
 	"granatumx/gbox-differentialexpression:1.0.0"
 	"granatumx/gbox-standardrecipes:1.0.0"
 )
