@@ -25,5 +25,6 @@ echo -e "\e[4;33mNow you may want to drop your gboxes into the database. Run:\e[
 echo "$ ./installStandardGboxes.sh"
 
 echo -e "\e[4;34mThis command is now tailing the webapp using gxtail, you can ctrl+c\e[0m"
+shopt -s expand_aliases
 . gx-aliases.sh
 gxtail

@@ -32,5 +32,6 @@ echo -e "\e[32mEverything is kicked off, may take a few minutes to start...\e[0m
 echo -e "\e[32mNavigate to localhost:34567 to check if running.\e[0m"
 echo ""
 echo -e "\e[4;33mThis command is now tailing the webapp using gxtail, you can ctrl+c\e[0m"
+shopt -s expand_aliases
 . gx-aliases.sh
 gxtail
