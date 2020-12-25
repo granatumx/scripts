@@ -23,3 +23,7 @@ echo -e "\e[32mNavigate to localhost:34567 to check if running.\e[0m"
 echo ""
 echo -e "\e[4;33mNow you may want to drop your gboxes into the database. Run:\e[0m"
 echo "$ ./installStandardGboxes.sh"
+
+echo -e "\e[4;34mThis command is now tailing the webapp using gxtail, you can ctrl+c\e[0m"
+. gx-aliases.sh
+gxtail
