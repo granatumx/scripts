@@ -2,6 +2,8 @@
 # Some of these can be turned into functions
 # ear() { echo "$@"; $@; }
 if [ -z ${DOCKER_SOCKET+"D"} ]; then export DOCKER_SOCKET="/var/run/docker.sock"; fi
+alias m="make"
+alias md="m docker && m docker-push"
 alias d="docker"
 alias dr="d run"
 alias drit="dr -it"
@@ -33,6 +35,11 @@ alias errtaskrunner="deit gx-webapp cat /var/granatum/error-taskrunner.log"
 alias gbuild="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_build.sh"
 alias gtest="rsync -av test/ runtest/ && docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_test.sh"
 alias gstage="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_staging.sh"
+
+gpush() {
+	docker push `cat GBOX_BASE_NAME.txt`:`cat VERSION.txt`
+}
+
 gxdoc() { 
 	docker  --rm -d -it --name gx-tmp1 granatumx/doc:{VER} bash; 
 	docker cp $1/$2 gx-tmp1:/tmp/.;
