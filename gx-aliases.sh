@@ -35,6 +35,8 @@ alias errtaskrunner="deit gx-webapp cat /var/granatum/error-taskrunner.log"
 alias gbuild="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_build.sh"
 alias gtest="rsync -av test/ runtest/ && docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_test.sh"
 alias gstage="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_staging.sh"
+alias gis="gx installStandardGboxes.sh"
+alias gir="gx installGbox.sh granatumx/gbox-standardrecipes:1.0.0"
 
 gpush() {
 	docker push `cat GBOX_BASE_NAME.txt`:`cat VERSION.txt`

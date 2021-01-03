@@ -19,6 +19,7 @@ gboxes=(
 	"granatumx/gbox-differentialexpression:1.0.0"
 	"granatumx/gbox-standardrecipes:1.0.0"
 	"granatumx/gbox-interactiveoutlierremoval:1.0.0"
+	"granatumx/gbox-fgsea:1.0.0"
 )
 
 for gbox in "${gboxes[@]}"
