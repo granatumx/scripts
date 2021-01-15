@@ -36,6 +36,8 @@ alias gbuild="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/
 alias gtest="rsync -av test/ runtest/ && docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_test.sh"
 alias gstage="docker run -e HOST_WD=\`pwd\` --rm --network host -v \`pwd\`:/tmp/build -v /var/run/docker.sock:/var/run/docker.sock -it granatumx/gbox-build:1.0.0 gbox_staging.sh"
 alias gis="gx installStandardGboxes.sh"
+alias gib="gx installGbox.sh"
+alias grb="gx removeGbox.sh"
 alias gir="gx installGbox.sh granatumx/gbox-standardrecipes:1.0.0"
 
 gpush() {
@@ -49,6 +51,7 @@ gxdoc() {
 	docker cp gx-tmp1:/tmp/. $1/;
 	docker stop gx-tmp1;
 }
+
 gxtest() { 
 	docker exec -it gx-webapp bash -c "cd \`ls -d $1\` && tar zcvf ../tar.tgz *";
 	rm -rf /tmp/tester;
@@ -62,10 +65,12 @@ gxtest() {
 	rm -rf /tmp/tester;
 	popd;
 }
+
 gxcleantest() {
 	rm -rf ./test/upload*/ ./test/imports/ ./test/exports/ ./test/debug/ ./test/*.json ./test/stderr ./test/stdout;
 	rm -rf runtest;
 }
+
 gag() {
 	if [ -z "$1" ]
 	then
