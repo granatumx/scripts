@@ -13,9 +13,6 @@ sleep 4
 echo -e "\e[1;4;31mInstalling standard gboxes...\e[0m"
 ./installStandardGboxes.sh
 
-echo -e "\e[1;4;31mInstalling standard recipes...\e[0m"
-./installGbox.sh granatumx/gbox-standardrecipes:1.0.0
-
 echo -e "\e[1;4;31mStopping taskrunner (if not running will give an error which you can ignore)...\e[0m"
 ./stopTaskrunner.sh
 echo "Starting taskrunner (restart if already running)..."
