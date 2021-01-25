@@ -52,16 +52,18 @@ The normal initialization sequence for GranatumX is as follows.
 
 
 ```
-$ gx runGXdatabase.sh		# Kick off database, wait a bit after starting up (4 seconds?)
-$ gx initGXdatabase.sh		# Initialize database, wait for completion
-$ gx installStandardGboxes.sh   # Install standard gboxes (install specific ones with installGbox.sh)
+$ gx init.sh	# Kick off database, init database, install gboxes, and run
+                # Initially it will tail the webapp startup
+                # Once server running, ctrl+c to exit the tail
 ```
 
-The normal startup sequence for GranatumX is as follows.
+The normal startup sequence for GranatumX after it was initialized is as follows.
 
 
 ```
-$ gx run.sh    			# Will start the database, taskrunner, and webapp
+$ gx run.sh    	# Will start the database, taskrunner, and webapp
+                # Initially it will tail the webapp startup
+                # Once server running, ctrl+c to exit the tail
 
 # Now you should be able to navigate to http://localhost:34567 and see GranatumX running.
 # If you would like to enable ssl, use apache or other webserver with proxy forwarding.
@@ -86,4 +88,5 @@ or `gxtail`. `gxtail` is preferred as it runs an active tail to monitor the weba
 If you have `docker` installed to another location, you can specify where the `docker.sock` file is
 by overriding `DOCKER_SOCKET` in bash. `export DOCKER_SOCKET="/var/docker.sock" && gx run.sh`.
 
+If you would like to develop a Gbox, see the [online steps](https://docs.google.com/document/d/1XxFoXasQeeJXH_gnwLYvDtPo16DCwLdeo4nidDH4WsI/view).
 
