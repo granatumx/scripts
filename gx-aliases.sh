@@ -39,6 +39,8 @@ alias gis="gx installStandardGboxes.sh"
 alias gib="gx installGbox.sh"
 alias grb="gx removeGbox.sh"
 alias gir="gx installGbox.sh granatumx/gbox-standardrecipes:1.0.0"
+alias gg="gbuild && gpush && gag"
+alias gdbox="gx installGboxFromDocker.sh"
 
 gpush() {
 	docker push `cat GBOX_BASE_NAME.txt`:`cat VERSION.txt`
