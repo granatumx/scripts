@@ -41,14 +41,14 @@ zsh should work OK.
 First set up your scripts and aliases to make things easier. This command should pull the container if
 it does not exist locally which facilitates installing on a server.
 !bc sys
-source <( docker run --rm -it granatumx/scripts:1.0.0 gx.sh )
+source <( docker run --rm -it granatumx/scripts:1.0.0 ./gx.sh )
 !ec
 
 This command makes `gx` available. You can simply run `gx` to obtain a list of scripts available.
 The normal initialization sequence for GranatumX is as follows.
 
 !bc sys
-$ gx init.sh	# Kick off database, init database, install gboxes, and run
+$ gx ./init.sh	# Kick off database, init database, install gboxes, and run
                 # Initially it will tail the webapp startup
                 # Once server running, ctrl+c to exit the tail
 !ec
@@ -56,7 +56,7 @@ $ gx init.sh	# Kick off database, init database, install gboxes, and run
 The normal startup sequence for GranatumX after it was initialized is as follows.
 
 !bc sys
-$ gx run.sh    	# Will start the database, taskrunner, and webapp
+$ gx ./run.sh    	# Will start the database, taskrunner, and webapp
                 # Initially it will tail the webapp startup
                 # Once server running, ctrl+c to exit the tail
 
@@ -66,7 +66,7 @@ $ gx run.sh    	# Will start the database, taskrunner, and webapp
 
 ===== Notes =====
 
-Sourcing gx.sh output with `source <( docker run --rm -it granatumx/scripts:1.0.0 gx.sh )` will expose
+Sourcing gx.sh output with `source <( docker run --rm -it granatumx/scripts:1.0.0 ./gx.sh )` will expose
 numerous shortcuts to docker. You will be able to compress things like `docker image ls` to `dils`.
 These shortcuts will not be as helpful if you do not have a working knowledge of `docker`, but can
 shorten your time for doing simple things once you are knowledgeable in what the commands execute.
@@ -81,6 +81,6 @@ You can determine errors with running the taskrunner or webapp using `errwebapp`
 or `gxtail`. `gxtail` is preferred as it runs an active tail to monitor the webapp.
 
 If you have `docker` installed to another location, you can specify where the `docker.sock` file is
-by overriding `DOCKER_SOCKET` in bash. `export DOCKER_SOCKET="/var/docker.sock" && gx run.sh`.
+by overriding `DOCKER_SOCKET` in bash. `export DOCKER_SOCKET="/var/docker.sock" && gx ./run.sh`.
 
 If you would like to develop a Gbox, see the "online steps":"https://docs.google.com/document/d/1XxFoXasQeeJXH_gnwLYvDtPo16DCwLdeo4nidDH4WsI/view".
